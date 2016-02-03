@@ -1,0 +1,17 @@
+{
+    "contents" : "#' Gather and reformat names\n#'\n#' \\code{gather_reformatted} extracts names of faculty members from a selected document and\n#' rearranges the order of first and last name.\n#'\n#' @param data a vector that contains character strings\n#' @return The output is a character vector that contains the names of faculty members in\n#' the format first-middle-last name and without any special characters at the beginning of\n#' strings.\n#' @examples\n#' scrub(\"2015-16\") %>% gather_reformatted()\n#' @seealso \\code{\\link{gather_exactly}} for an alternative gatherer.\ngather_reformatted <- function(data){\n  # Obtain first names using regular expressions\n  first_name <-\n    \",(| )(.*?),\" %>%\n    regexpr(data) %>%\n    regmatches(data, .) %>%\n    gsub(\",(| )|,\", \"\", .)\n\n  # Similarly,\n  last_name <-\n    \"[A-Z](.*?),\" %>%\n    regexpr(data) %>%\n    regmatches(data, .) %>%\n    gsub(\",.*\", \"\", .)\n\n  names <- paste(first_name, last_name, sep = \" \")\n  return(names)\n}",
+    "created" : 1454467292654.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1104273889",
+    "id" : "29DF8FAB",
+    "lastKnownWriteTime" : 1454448298,
+    "path" : "C:/Users/Zafer/Desktop/R Project/packages/ager/R/gather_reformatted.R",
+    "project_path" : "R/gather_reformatted.R",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

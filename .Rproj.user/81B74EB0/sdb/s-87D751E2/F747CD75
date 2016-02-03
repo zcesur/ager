@@ -1,0 +1,17 @@
+{
+    "contents" : "Package: ager\nType: Package\nTitle: Extract faculty age data\nVersion: 0.1\nDate: 2016-01-29\nAuthor: 'Zafer Cesur <zc4@williams.edu> [aut, cre]'\nMaintainer: 'Zafer Cesur <zc4@williams.edu> [aut, cre]'\nDescription: The package provides the functionality for extracting the graduation data of Williams College faculty from a variety of sources.\nLicense: CC0\nLazyData: TRUE\nRoxygenNote: 5.0.1\nImports: knitr,\n    ggplot2,\n    reshape2,\n    rmarkdown,\n    testthat,\n    devtools,\n    magrittr,\n    rvest,\n    dplyr\nVignetteBuilder: knitr\n",
+    "created" : 1454499459302.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1886231662",
+    "id" : "F747CD75",
+    "lastKnownWriteTime" : 1454503160,
+    "path" : "C:/Users/Zafer/Desktop/R Project/packages/ager/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "dcf"
+}

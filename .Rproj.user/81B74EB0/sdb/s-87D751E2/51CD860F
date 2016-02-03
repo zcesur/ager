@@ -1,0 +1,17 @@
+{
+    "contents" : "#' Fill missing values\n#'\n#' \\code{fill_gaps} locates NAs in a faculty data frame and attempts to find missing\n#' information on Williams' website.\n#'\n#' @param data_frame a data frame that contains educational information on faculty.\n#' @return The output is also a data frame.\n#' @examples\n#' fill_gaps(faculty_df)\nfill_gaps <- function(data_frame){\n  # The carrot makes sure that we only get the first word of each names element.\n  first_name <- regmatches(names, regexpr(\"^\\\\w+\", names))\n\n  # The optional \\\\w+[-] pattern makes sure that we take hypenated last names such as\n  # 'Robert Baker-White' into account.\n  last_name <- regmatches(names, regexpr(\"(\\\\w+[-])?\\\\w+$\", names))\n\n  search_query <- paste(first_name, \"+\", last_name, sep = \"\")\n  search_link <- paste(\"http://www.williams.edu/people/?s_directory=\", search_query, sep = \"\")\n  for (i in which(is.na(faculty_df[ ,2]) == TRUE)){\n    tryCatch({\n      directory_search <- read_html(search_link[i])\n    }, error=function(e){cat(\"Unidentified error in the first connection during\", print(i), \"\\n\")})\n    email_node <- html_nodes(directory_search, css = \".phone+ .email a\")\n    if (length(email_node) != 0){\n      unix_id <- gsub(\"mailto:|@williams.edu\", \"\", html_attr(email_node, \"href\"))\n      if (length(unix_id) > 1){\n        print(cat(\"Warning: More than one people with the name\", print(names[i]), \"\\n\"))\n      }\n      tryCatch({\n        profile_data <- html_text(\n          html_nodes(\n            read_html(\n              paste(\"http://www.williams.edu/profile/\", unix_id[1], sep=\"\")),\n            css = \".profile-education .profile-subsection\"))\n      }, error=function(e){cat(\"Unidentified error in the second connection during\", print(i), \"\\n\")})\n      pattern <- \"(B\\\\.(.*?)\\\\.|A\\\\.B\\\\.|Diploma) .*? \\\\(\\\\d{4}\\\\)\"\n\n      # Catch potential exceptions\n      tryCatch({\n        education_info <- regmatches(profile_data, regexpr(pattern, profile_data))\n        year <- as.integer(\n          gsub(\"(B\\\\.(.*?)\\\\.|A\\\\.B\\\\.|Diploma) .* \\\\(|\\\\)\", \"\", education_info))\n        degree <- gsub(\" .*\", \"\", education_info)\n        college <- gsub(\"(B\\\\.(.*?)\\\\.|A\\\\.B\\\\.|Diploma) | \\\\(\\\\d{4}\\\\)\", \"\", education_info)\n        faculty_df[i,2:5] <- c(year, degree, college, 2016-as.integer(year)+22)\n      }, error=function(e){cat(\"Missing information on\", print(names[i]), \"\\n\")})\n    }\n  }\n  faculty_df$Degree <- as.factor(faculty_df$Degree)\n  return(data_frame)\n}",
+    "created" : 1454399442115.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1758501151",
+    "id" : "51CD860F",
+    "lastKnownWriteTime" : 1454499237,
+    "path" : "C:/Users/Zafer/Desktop/R Project/packages/ager/R/fill_gaps.R",
+    "project_path" : "R/fill_gaps.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
