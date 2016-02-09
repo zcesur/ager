@@ -9,13 +9,11 @@ Description: The package provides the functionality for extracting the age data 
 License: CC0
 LazyData: TRUE
 RoxygenNote: 5.0.1
-Imports: knitr,
+Imports:
     ggplot2,
-    reshape2,
-    rmarkdown,
-    testthat,
     devtools,
-    magrittr,
     rvest,
     dplyr
+Suggests:
+    knitr
 VignetteBuilder: knitr

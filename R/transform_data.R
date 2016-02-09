@@ -7,11 +7,11 @@
 #' @return The output is a data frame which consists of all relevant data.
 #' @examples
 #' #academic_year <- "2015-16"
-#' #+ flat_file <- scrub_catalog(academic_year)
-#' #+ names <- collect_names(flat_file, reformat = TRUE)
-#' #+ data_source <- scrub_catalog("2013-14")
-#' #+ academic_data <- extract_data(names, data_source, useInternet = TRUE)
-#' #+ data_frame <- transform_data(academic_data)
+#' #flat_file <- scrub_catalog(academic_year)
+#' #names <- collect_names(flat_file, reformat = TRUE)
+#' #data_source <- scrub_catalog("2013-14")
+#' #academic_data <- extract_data(names, data_source, useInternet = TRUE)
+#' #data_frame <- transform_data(academic_data)
 transform_data <- function(selected_data){
 
 by1 <- c("BA", "BS", "BM", "BFA", "BPhil", "AB", "BE", "A.B.")

@@ -11,9 +11,6 @@ vignette: >
 
 ```{r include = FALSE, cache = FALSE}
 library(devtools)
-library(magrittr)
-library(knitr)
-library(roxygen2)
 library(rvest)
 library(ggplot2)
 library(dplyr)

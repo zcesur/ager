@@ -6,6 +6,7 @@
 \alias{ager-package}
 \title{The ager package.}
 \description{
-\code{ager} thıs package does etc
+\code{ager} package is focused on extracting the graduation data of Williams College faculty
+in order to construct statistical models for faculty age.
 }
 

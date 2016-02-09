@@ -9,7 +9,6 @@
 #' @section Note:
 #' This function is only applicable to the academic year 2015-16.
 #' @examples
-#'
 #' #departments <- scrub_catalog("2015-16") %>% collect_departments()
 collect_departments <- function(flat_file){
   departments <- c()

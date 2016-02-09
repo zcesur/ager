@@ -15,10 +15,10 @@
 #' while to finish.
 #' @examples
 #' #academic_year <- "2015-16"
-#' #+ flat_file <- scrub_catalog(academic_year)
-#' #+ names <- collect_names(flat_file, reformat = TRUE)
-#' #+ data_source <- scrub_catalog("2013-14")
-#' #+ academic_data <- extract_data(names, data_source, useInternet = TRUE)
+#' #flat_file <- scrub_catalog(academic_year)
+#' #names <- collect_names(flat_file, reformat = TRUE)
+#' #data_source <- scrub_catalog("2013-14")
+#' #academic_data <- extract_data(names, data_source, useInternet = TRUE)
 extract_data <- function(names, data_source, useInternet = FALSE){
 
   pattern <- "\\d{4}, (B\\w+|AB), (.*?),"

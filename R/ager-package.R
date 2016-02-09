@@ -1,17 +1,13 @@
 #' The ager package.
 #'
-#' \code{ager} thıs package does etc
+#' \code{ager} package is focused on extracting the graduation data of Williams College faculty
+#' in order to construct statistical models for faculty age.
 #'
 #' @name ager
 #' @docType package
 #'
-#'
 #' @import ggplot2
-#' @import reshape2
-#' @import rmarkdown
-#' @import testthat
 #' @import devtools
-#' @import magrittr
 #' @import rvest
-#' @import dplyr
+#' @importFrom dplyr mutate
 NULL
