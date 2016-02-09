@@ -1,7 +1,7 @@
 #' The ager package.
 #'
 #' \code{ager} package is focused on extracting the graduation data of Williams College faculty
-#' in order to construct statistical models for faculty age.
+#' so that the age thereof can be estimated.
 #'
 #' @name ager
 #' @docType package
