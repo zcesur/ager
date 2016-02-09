@@ -1,11 +1,11 @@
 Package: ager
 Type: Package
 Title: Extract faculty age data
-Version: 0.1
+Version: 0.2
 Date: 2016-01-29
-Author: 'Zafer Cesur <zc4@williams.edu> [aut, cre]'
-Maintainer: 'Zafer Cesur <zc4@williams.edu> [aut, cre]'
-Description: The package provides the functionality for extracting the graduation data of Williams College faculty from a variety of sources.
+Author: Zafer Cesur <zc4@williams.edu>
+Maintainer: Zafer Cesur <zc4@williams.edu>
+Description: The package provides the functionality for extracting the age data of Williams College faculty.
 License: CC0
 LazyData: TRUE
 RoxygenNote: 5.0.1
