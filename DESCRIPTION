@@ -13,8 +13,7 @@ Imports:
     ggplot2,
     devtools,
     rvest,
-    dplyr,
-    curl
+    dplyr
 Suggests:
     knitr
 VignetteBuilder: knitr
