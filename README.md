@@ -33,7 +33,10 @@ install_github("zcesur/williams-faculty-age”)
 
 ## Results
 
-in progress
+![](./vignettes/figures/fig1-overview.png)
+![](./vignettes/figures/fig2-dist-by-year.png)
+![](./vignettes/figures/fig3-degree.png)
+![](./vignettes/figures/fig4-avg-dept.png)
 
 ## Acknowledgments
 
