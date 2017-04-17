@@ -1,4 +1,4 @@
-Package: williams-faculty-age
+Package: facultyAge
 Type: Package
 Title: Extract faculty age data
 Version: 0.3
@@ -8,7 +8,7 @@ Maintainer: Zafer Cesur <zc4@williams.edu>
 Description: The package provides the functionality for extracting the age data of Williams College faculty from the online catalogs.
 License: CC0
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Imports:
     ggplot2,
     devtools,

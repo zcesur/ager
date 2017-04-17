@@ -8,17 +8,23 @@
 #' @param data_source a plain text file that contains the desired information.
 #' @param useInternet logical. If TRUE missing data is extracted from Williams' website,
 #' otherwise it is left blank.
+#' 
 #' @return The output is a named vector that contains the graduation year and the degree of
 #' faculty members.
+#' 
 #' @section Note:
 #' Assigning the TRUE value to \code{useInternet} may result in a code execution that takes a
 #' while to finish.
+#' 
 #' @examples
 #' #academic_year <- "2015-16"
 #' #flat_file <- parse_catalog(academic_year)
 #' #names <- collect_names(flat_file, reformat = TRUE)
 #' #data_source <- parse_catalog("2013-14")
 #' #academic_data <- extract_data(names, data_source, useInternet = TRUE)
+#' 
+#' @import rvest
+#' @export
 extract_data <- function(names, data_source, useInternet = FALSE){
 
   pattern <- "\\d{4}, (B\\w+|AB), (.*?),"

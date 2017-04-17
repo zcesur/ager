@@ -5,11 +5,16 @@
 #'
 #' @param flat_file a plain text file that contains one record (i.e., faculty member)
 #' per line.
+#' 
 #' @return The output is a character vector that contains the departments of faculty members.
+#' 
 #' @section Note:
 #' This function is only applicable to the academic year 2015-16.
+#' 
 #' @examples
 #' #departments <- parse_catalog("2015-16") %>% collect_departments()
+#' 
+#' @export
 collect_departments <- function(flat_file){
   departments <- c()
     for (i in seq_along(flat_file)){

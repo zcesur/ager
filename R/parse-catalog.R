@@ -3,9 +3,13 @@
 #' \code{parse_catalog} removes all irrelevant data in catalog files.
 #'
 #' @param year an academic year of which faculty data is desired.
+#' 
 #' @return The output is a character vector that contains one record per element.
+#' 
 #' @examples
 #' #parse_catalog("2011-12")
+#' 
+#' @export
 parse_catalog <- function(year){
   # Open up a txt file and store lines of information as character strings of the
   # vector 'data'
