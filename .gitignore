@@ -1,2 +1,24 @@
-inst/doc
-.Rproj.user
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+*.un~
+Session.vim
+.netrwhist
+*~
+tags
+
+# R
+.Rhistory
+.Rapp.history
+.RData
+*-Ex.R
+/*.tar.gz
+/*.Rcheck/
+.Rproj.user/
+.httr-oauth
+/*_cache/
+/cache/
+*.utf8.md
+*.knit.md
