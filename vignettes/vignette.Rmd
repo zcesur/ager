@@ -68,7 +68,7 @@ The next step is removing irrelevant parts of the text file.
   # Open up a txt file and store lines of information as character strings of the
   # vector 'flat_file'
   flat_file <- paste("2015-16", ".txt", sep = "") %>%
-    system.file("extdata", ., package = "williams-faculty-age") %>%
+    system.file("extdata", ., package = "facultyAge") %>%
     readLines(skipNul = TRUE)
     head(flat_file, 12)
 ```
@@ -291,7 +291,7 @@ For the sake of efficiency, I have stored the data we need in the folder */inst/
 
 ```{r}
 academic_data <- dget(file = system.file("extdata", "academic_data1516.txt",
-  package = "williams-faculty-age"))
+  package = "facultyAge"))
   head(academic_data)
 ```
   
@@ -351,7 +351,7 @@ The final step is to integrate data from different sources into a single data wa
   
   academic_year <- "2014-15"
   academic_data <- dget(file = system.file("extdata", "academic_data1415.txt",
-  package = "williams-faculty-age"))
+  package = "facultyAge"))
   faculty1415_df <- transform_data(academic_data)
   head(faculty1415_df)
 ```

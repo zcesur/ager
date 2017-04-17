@@ -14,10 +14,11 @@ parse_catalog <- function(year){
   # Open up a txt file and store lines of information as character strings of the
   # vector 'data'
   flat_file <- paste(year, ".txt", sep = "") %>%
-    system.file("extdata", ., package = "ager") %>%
+    system.file("extdata", ., package = "facultyAge") %>%
     readLines(skipNul = TRUE)
 
   # Remove leftovers from the previous page.
+  Sys.setlocale('LC_ALL','C')
   relevant_line <- grep("FACULTY", flat_file)[1]
   flat_file <- flat_file[-seq(1, relevant_line - 1)]
 
