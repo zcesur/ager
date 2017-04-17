@@ -1,12 +1,12 @@
 #' Clean catalog files
 #'
-#' \code{scrub_catalog} removes all irrelevant data in catalog files.
+#' \code{parse_catalog} removes all irrelevant data in catalog files.
 #'
 #' @param year an academic year of which faculty data is desired.
 #' @return The output is a character vector that contains one record per element.
 #' @examples
-#' #scrub_catalog("2011-12")
-scrub_catalog <- function(year){
+#' #parse_catalog("2011-12")
+parse_catalog <- function(year){
   # Open up a txt file and store lines of information as character strings of the
   # vector 'data'
   flat_file <- paste(year, ".txt", sep = "") %>%

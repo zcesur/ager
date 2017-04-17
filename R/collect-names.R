@@ -11,8 +11,8 @@
 #' without any special characters indicating whether the faculty member is visiting or on
 #' leave.
 #' @examples
-#' #names <- scrub_catalog("2013-14") %>% collect_names(reformat = FALSE)
-#' #names <- scrub_catalog("2015-16") %>% collect_names(reformat = TRUE)
+#' #names <- parse_catalog("2013-14") %>% collect_names(reformat = FALSE)
+#' #names <- parse_catalog("2015-16") %>% collect_names(reformat = TRUE)
 collect_names <- function(flat_file, reformat = FALSE){
   if (reformat == FALSE){
   names <-

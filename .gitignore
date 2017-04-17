@@ -10,6 +10,8 @@ Session.vim
 tags
 
 # R
+*.Rproj
+.Rbuildignore
 .Rhistory
 .Rapp.history
 .RData
@@ -22,3 +24,4 @@ tags
 /cache/
 *.utf8.md
 *.knit.md
+.Rproj.user

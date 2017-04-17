@@ -1,6 +1,6 @@
 ---
 title: "Estimating Williams College Faculty Age"
-author: "Zafer Cesur ('19)"
+author: "Zafer Cesur"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -19,14 +19,14 @@ load_all()
 
 ---
 
-**Abstract** This paper describes the R package **ager**. The package is focused on gathering the graduation data of Williams College faculty in order to construct statistical models for faculty age. The paper outlines the functions for selection and organization of the data, which are designed to require little to no manual manipulation during pre-processing and transformation thereof and be as applicable as possible so that it can easily be used for future years. The usage of these functions is illustrated and the results are demonstrated with descriptive histograms.
+**Abstract** This paper describes the R package **williams-faculty-age**. The package is focused on gathering the graduation data of Williams College faculty in order to estimate the faculty age. The paper outlines the functions for selection and organization of the data, which are designed to require little to no manual manipulation during pre-processing and transformation thereof and be as applicable as possible so that it can easily be used for future years. The usage of these functions is illustrated and the results are demonstrated with descriptive plots.
 
 ---
 
 ## Introduction:
-The package **ager** provides the functionality for easily accessing educational background of Williams College faculty members that consist of professors, lecturers and postdoctoral fellows. This is useful because assuming that most people graduate when they are 22 years old, we can estimate faculty's age with a small margin of error.
+The package provides the functionality for easily accessing educational background of Williams College faculty members that consist of professors, lecturers and postdoctoral fellows. This is useful because assuming that most people complete their undergraduate studies when they are 22 years old, we can estimate the age of the faculty with a small margin of error.
 
-Brief academic history of faculty members is available on the course catalogs that can be accessed online on Williams' website. Let us explore and compare some excerpts taken from these catalogs. For instance, this is how it looked in 2009-2010: 
+Brief academic history of faculty members is available on the course catalogs that can be accessed online on Williams College website. Let us explore and compare some excerpts taken from these catalogs. For instance, this is how it looked in 2009-2010: 
 
 > Colin C. Adams, Thomas T. Read Professor of Mathematics  
 > B.S. (1978) M.I.T.; Ph.D. (1983) University of Wisconsin
@@ -46,7 +46,7 @@ The rest of the paper is organized as follows. First we are going to explain how
 ---
 
 ## Methods
-This section presents the methodology used in the package **ager**.
+This section presents the methodology used in the package **williams-faculty-age**.
 
 ### 1. Accessing and converting archived documents
 The catalog files are downloaded from the Williams' website in PDF format. Then, using A-PDF Text Extractor, the selected pages are converted into TXT files. The desired pages vary from year to year based on the content of the catalog; for the academic year 2015-2016 we need pages from 396 through 398. Here is the workflow that we used to prepare the data we need:
@@ -68,12 +68,12 @@ The next step is removing irrelevant parts of the text file.
   # Open up a txt file and store lines of information as character strings of the
   # vector 'flat_file'
   flat_file <- paste("2015-16", ".txt", sep = "") %>%
-    system.file("extdata", ., package = "ager") %>%
+    system.file("extdata", ., package = "williams-faculty-age") %>%
     readLines(skipNul = TRUE)
     head(flat_file, 12)
 ```
 
-As we can see, there is a myriad of unwanted lines in the beginning of the document. We also have to get rid of empty lines inbetween and of the elements containing page numbers. We can remove these with the following set of codes.
+As we can see, there is a lot of unwanted lines in the beginning of the document. We also have to get rid of empty lines inbetween and of the elements containing page numbers. We can remove these with the following set of codes.
 
 ```{r}
   # Remove leftovers from the previous page. In this case, we do not have any, however
@@ -112,11 +112,11 @@ After the basic structure is established, we need to make sure no character stri
 
 Of course, this step requires an assumption and an arbitrary integer to be chosen and there might be a better algorithm or program suited for this, but I have observed that it is precise enough for our purposes.
 
-This section can be reproduced simply with the *scrub_catalog* function.
+This section can be reproduced simply with the *parse_catalog* function.
 
 ```{r}
   academic_year <- "2015-16"
-  flat_file <- scrub_catalog(academic_year)
+  flat_file <- parse_catalog(academic_year)
   head(flat_file)
 ```
 
@@ -172,7 +172,7 @@ We can also collect the department data from the year 2015-2016 in a similar way
 Now using the names we have gathered, we can obtain information from another document that has the desired content. For instance, so as to access the information we need for the analysis of the academic year 2015-16, we can extract data from the catalog of the year 2013-14 using the names of the faculty members who are common. We store the source catalog in another flat file called *data_source*, but we do not need to collect names from this data source because it is unnecessary.
 
 ```{r}
-  data_source <- scrub_catalog("2013-14")
+  data_source <- parse_catalog("2013-14")
   pattern <- "\\d{4}, (B\\w+|AB), (.*?),"
   academic_data <- sapply(names, function(x){
     vector <-
@@ -291,7 +291,7 @@ For the sake of efficiency, I have stored the data we need in the folder */inst/
 
 ```{r}
 academic_data <- dget(file = system.file("extdata", "academic_data1516.txt",
-  package = "ager"))
+  package = "williams-faculty-age"))
   head(academic_data)
 ```
   
@@ -342,8 +342,8 @@ The final step is to integrate data from different sources into a single data wa
 
 ```{r}
   academic_year <- "2013-14"
-  flat_file <- scrub_catalog(academic_year)
-  data_source <- scrub_catalog("2013-14")
+  flat_file <- parse_catalog(academic_year)
+  data_source <- parse_catalog("2013-14")
   names <- collect_names(flat_file, reformat = FALSE)
   academic_data <- extract_data(names, data_source, useInternet = FALSE)
   faculty1314_df <- transform_data(academic_data)
@@ -351,7 +351,7 @@ The final step is to integrate data from different sources into a single data wa
   
   academic_year <- "2014-15"
   academic_data <- dget(file = system.file("extdata", "academic_data1415.txt",
-  package = "ager"))
+  package = "williams-faculty-age"))
   faculty1415_df <- transform_data(academic_data)
   head(faculty1415_df)
 ```
